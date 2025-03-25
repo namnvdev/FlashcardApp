@@ -1,10 +1,12 @@
 using System.Diagnostics;
 using FlashcardApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlashcardApp.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles= "Admin,Editor")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

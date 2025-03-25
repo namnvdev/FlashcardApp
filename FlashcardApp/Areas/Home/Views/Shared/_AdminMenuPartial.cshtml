@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using FlashcardApp.Models
+@inject SignInManager<Member> SignInManager
+@inject UserManager<Member> UserManager
+
+<ul class="navbar-nav ms-auto">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        var user = await UserManager.GetUserAsync(User);
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span>Actions</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li>
+                    <a class="dropdown-item" asp-area="Home" asp-controller="Deck" asp-action="Index">Decks</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" asp-area="Home" asp-controller="Flashcard" asp-action="Index">Flashcards</a>
+                </li>
+            </ul>
+        </li>
+        
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="@user.ProfilePictureUrl" alt="Profile" class="rounded-circle" width="30" height="30">
+                <span>@user.UserName</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li>
+                    <a class="dropdown-item" asp-area="Home" asp-controller="Account" asp-action="Profile">Profile</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" asp-area="Home" asp-controller="Account" asp-action="Logout">Logout</a>
+                </li>
+            </ul>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link btn btn-primary text-white" asp-area="Home" asp-controller="Account" asp-action="Login">Login</a>
+        </li>
+    }
+</ul>

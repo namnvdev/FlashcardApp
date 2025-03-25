@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace FlashcardApp.Areas.Home.ViewModels
 {
@@ -11,5 +12,6 @@ namespace FlashcardApp.Areas.Home.ViewModels
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        public string ReturnUrl { get; set; }
     }
 }

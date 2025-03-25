@@ -44,10 +44,11 @@ namespace FlashcardApp.Data
         }
 
 
-        DbSet<Flashcard> Flashcards { get; set; }
-        DbSet<Deck> Decks { get; set; }
-        DbSet<Tag> Tags { get; set; }
-        DbSet<FlashcardTag> FlashcardTags { get; set; }
-        DbSet<StudySession> StudySessions { get; set; }
+       public DbSet<Member> Members { get; set; }
+       public DbSet<Flashcard> Flashcards { get; set; }
+       public DbSet<Deck> Decks { get; set; }
+       public DbSet<Tag> Tags { get; set; }
+       public DbSet<FlashcardTag> FlashcardTags { get; set; }
+       public DbSet<StudySession> StudySessions { get; set; }
     }
 }

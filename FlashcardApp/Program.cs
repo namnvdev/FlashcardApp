@@ -30,8 +30,8 @@ builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.ConfigureApplicationCookie(options =>
     {
-        options.LoginPath = "/Login";
-        options.AccessDeniedPath = "/AccessDenied";
+        options.LoginPath = "/Account/Login";
+        options.AccessDeniedPath = "/Account/AccessDenied";
     });
 
 
@@ -53,6 +53,13 @@ app.UseRouting();
 app.UseAuthorization();
 
 
+
+// Init data - Role (Admin, User) & Admin users
+var serviceProvider = app.Services.CreateScope().ServiceProvider;
+await IdentitySeedData.InitializeAsync(serviceProvider);
+
+//SeedDatabase();
+
 app.MapControllerRoute(
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}",
@@ -70,3 +77,13 @@ app.MapDefaultControllerRoute();
 //    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+
+//void SeedDatabase()
+//{
+//    using (var scope = app.Services.CreateScope())
+//    {
+//        var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+//        dbInitializer.Initialize();
+//    }
+//}

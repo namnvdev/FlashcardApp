@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using FlashcardApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlashcardApp.Areas.Home.Controllers

@@ -1,11 +1,11 @@
-﻿namespace FlashcardApp.Services.Impl
-{
-    using System.Threading.Tasks;
-    using FlashcardApp.Areas.Home.ViewModels;
-    using FlashcardApp.Models;
-    using FlashcardApp.Repositories;
-    using Microsoft.AspNetCore.Identity;
+﻿using System.Threading.Tasks;
+using FlashcardApp.Areas.Home.ViewModels;
+using FlashcardApp.Models;
+using FlashcardApp.Repositories;
+using Microsoft.AspNetCore.Identity;
 
+namespace FlashcardApp.Services.Impl
+{
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
